@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/wasteprocessing/__init__.py
+src/wasteprocessing/agents.py
+src/wasteprocessing/app.py
+src/wasteprocessing/browser.py
+src/wasteprocessing/database.py
+src/wasteprocessing/main.py
+src/wasteprocessing.egg-info/PKG-INFO
+src/wasteprocessing.egg-info/SOURCES.txt
+src/wasteprocessing.egg-info/dependency_links.txt
+src/wasteprocessing.egg-info/requires.txt
+src/wasteprocessing.egg-info/top_level.txt

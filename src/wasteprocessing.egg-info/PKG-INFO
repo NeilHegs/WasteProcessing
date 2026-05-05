@@ -1,3 +1,16 @@
+Metadata-Version: 2.4
+Name: wasteprocessing
+Version: 0.1.0
+Summary: UK-focused human waste management research and structured data capture
+Author: Neil Hegs
+License: MIT
+Project-URL: Repository, https://github.com/NeilHegs/WasteProcessing
+Keywords: waste,research,anthropic,uk,environment
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: Flask>=2.3.0
+
 # WasteProcessing
 
 This repository is the initial scaffold for the WasteProcessing research initiative.

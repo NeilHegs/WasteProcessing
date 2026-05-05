@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WasteProcessing DB Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f8fafc; color: #111827; }
+    h1 { margin-bottom: 0.5rem; }
+    .search-panel { margin-bottom: 1.5rem; }
+    input[type="search"] { width: 320px; padding: 0.6rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.35rem; }
+    button { padding: 0.65rem 1rem; border: none; border-radius: 0.35rem; background: #2563eb; color: white; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.8rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+    th { background: #e2e8f0; }
+    tbody tr:nth-child(even) { background: #f1f5f9; }
+    .empty { margin-top: 1rem; color: #475569; }
+    .notice { margin-top: 0.75rem; color: #334155; }
+  </style>
+</head>
+<body>
+  <h1>WasteProcessing Database Search</h1>
+  <p class="notice">Search the structured research reports stored locally in the WasteProcessing SQLite database.</p>
+
+  <div class="search-panel">
+    <form id="search-form">
+      <input id="query" type="search" placeholder="Search title, summary, details, source..." autocomplete="off" />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div id="status"></div>
+  <table id="results-table" hidden>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>Category</th>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody id="results-body"></tbody>
+  </table>
+  <div id="empty-message" class="empty" hidden>No reports found.</div>
+
+  <script>
+    const form = document.getElementById('search-form');
+    const queryInput = document.getElementById('query');
+    const statusEl = document.getElementById('status');
+    const resultsTable = document.getElementById('results-table');
+    const resultsBody = document.getElementById('results-body');
+    const emptyMessage = document.getElementById('empty-message');
+
+    async function searchReports(event) {
+      if (event) event.preventDefault();
+      const query = queryInput.value.trim();
+      statusEl.textContent = 'Searching...';
+      resultsTable.hidden = true;
+      emptyMessage.hidden = true;
+      try {
+        const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        statusEl.textContent = `Found ${data.results.length} report(s)`;
+        resultsBody.innerHTML = '';
+
+        if (data.results.length === 0) {
+          emptyMessage.hidden = false;
+          return;
+        }
+
+        data.results.forEach(report => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${escapeHtml(report.agent)}</td>
+            <td>${escapeHtml(report.category)}</td>
+            <td>${escapeHtml(report.title)}</td>
+            <td>${escapeHtml(report.summary)}</td>
+            <td>${escapeHtml(report.source)}</td>
+          `;
+          resultsBody.appendChild(row);
+        });
+        resultsTable.hidden = false;
+      } catch (error) {
+        statusEl.textContent = 'Error searching reports. Make sure the backend is running.';
+        console.error(error);
+      }
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    form.addEventListener('submit', searchReports);
+    window.addEventListener('DOMContentLoaded', () => searchReports());
+  </script>
+</body>
+</html>
