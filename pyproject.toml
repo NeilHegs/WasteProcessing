@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wasteprocessing"
+version = "0.1.0"
+description = "UK-focused human waste management research and structured data capture"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-dotenv>=1.0.0",
+]
+license = {text = "MIT"}
+authors = [
+    {name = "Neil Hegs"},
+]
+keywords = ["waste", "research", "anthropic", "uk", "environment"]
+
+[project.urls]
+"Repository" = "https://github.com/NeilHegs/WasteProcessing"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["wasteprocessing"]

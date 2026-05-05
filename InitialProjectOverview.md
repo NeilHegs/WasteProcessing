@@ -1,0 +1,20 @@
+Create a project in the /Users/neilhegarty/Documents/AIProjects/myAI/WasteProcessing directory. Read the global CLAUDE.md file adding the skills mentioned there. Set my Anthropic API key in the project .env with ANTHROPIC_API_KEY=${MYAPI}, referencing the stored key in the global .env Add all .env to .gitignore
+
+Create a project with the name of this project in GitHub under my gh account
+
+You will be the owner of this project and will employ agents to achieve the goals. You will not do any of the tasks yourself. We will be doing research into human waste management, focusing on the United Kingdom. I would like the information we gather to be stored in a structured way in a database, so that information can be extracted later.
+
+We will need the following focused agents:
+
+### Researcher 1, for the toilet ### 
+This agent will be researching the processing of human waste material (faeces, urine and vomit) that enters and leaves a toilet. The goal is to create a system inside the toilet that processes this waste such that the liquid in the solid matter can be reduced by approximately 50%. Liquid and solid waste could be separated and ejected from the toilet either via separate pipes or with liquids first and solids slightly later, but this is just an idea. It is important that this waste processing can be designed into an existing toilet space. The outer housing of the toilet and its functionality for a human should not change. The research should include not only the physical movement of waste material, but also possible materials that could be used inside the toilet to facilitate separation and subsequent movement of waste materials. For instance a dehydration substance, or a lining on the surfaces that stops any substance attaching to a surface, even though it is relatively dry.
+
+Initially we should create 5 ideas. These initial ideas should consider the following variables: expense to manufacture, difficulty of installation into existing toilet area, level of technical complexity (less is better), noise level during processing, time taken from point of flushing to toilet returning to “readiness” state for next user. If this is to be a successful project cost and functionality are important.
+
+Also look into how the liquid portion of the waste might be filtered at the toilet, producing liquid that might have some local use.
+
+### Researcher 2, for the human waste management sector ### 
+This agent will do research on what the current issues facing the companies in the sector, focusing on the UK. It should include the costs of transportation of waste and the costs in facility processing. If possible try to determine what differences might occur if solid waste was reduced in weight/volume by 50% in the toilet itself. The waste treatment companies in the UK are now private and as such need to show profits to shareholders, which is inhibiting investment in infrastructure. It is deemed cheaper to pay fines, than upgrade existing water treatment facilities. Research how different waste management companies perform and why and what the environmental impacts of this performance are. Find out if there are any new technologies, or proposals that might create a paradigm shift in this industry.
+
+### Presentation ### 
+This agent will be a specialist in creating presentations for first round investment meetings. This presentation will require an overview of the current issues with waste management in the UK, focusing on current waste management facilities issues and the costs of potential remedies. Also estimated volumes of human waste having to be transported, and then processed. There will be information from Researcher 1 and Researcher 2 to be included in this presentation. The presentation should be able to show the implementation of toilets that can reduce solid waste volume/weight could provide considerable cost/benefit to the facility management companies. 
